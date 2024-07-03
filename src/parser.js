@@ -7,7 +7,8 @@ const TTEParser = (function () {
 	 * @param {HTML entity} table The table to be converted to excel sheet
 	 */
 	methods.parseDomToTable = function (ws, table, opts) {
-		const startrow = ws.rowCount + 1;
+		let startrow = ws.rowCount + 1;
+		if(ws.rowCount === 1) startrow = 0;
 		let _r, _c, cs, rs, r, c;
 		let rows = [...table.rows];
 		let widths = table.getAttribute('data-cols-width');
